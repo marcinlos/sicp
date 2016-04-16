@@ -9,6 +9,14 @@
       (+ (term a)
          (sum term (next a) next b))))
 
+(define (sum* term a next b)
+  (define (sum-iter a result)
+    (if (> a b)
+        result
+        (sum-iter (next a)
+                  (+ (term a) result))))
+  (sum-iter a 0))
+
 (define (sum-of-squares a b)
   (sum (lambda (n) (* n n)) a (lambda (n) (+ n 1)) b))
 
@@ -21,4 +29,4 @@
     (define (term i)
       (let ((x (+ a (* i h (- b a)))))
         (* (/ h 3) (f x) (coeff i))))
-    (sum term 0 inc n)))
+    (sum* term 0 inc n)))
