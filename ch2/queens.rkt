@@ -51,7 +51,7 @@
            (occupied negative-diag))))
 
 (define (most-recent-queen-safe? board)
-    (safe? (car board) (cdr board)))
+  (safe? (car board) (cdr board)))
 
 (define (enumerate-interval a b)
   (if (> a b)
@@ -64,8 +64,8 @@
         (list empty-board)
         (filter most-recent-queen-safe?
                 (flatmap
-                 (lambda (board)
-                   (map (lambda (n) (adjoin-position n k board))
-                        (enumerate-interval 1 board-size)))
-                 (queen-cols (- k 1))))))
+                  (lambda (board)
+                    (map (lambda (n) (adjoin-position n k board))
+                         (enumerate-interval 1 board-size)))
+                  (queen-cols (- k 1))))))
   (queen-cols board-size))
