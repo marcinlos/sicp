@@ -20,8 +20,8 @@
             (smaller-right (right-split painter (- n 1)))
             (smaller-corner (corner-split painter (- n 1))))
         (beside
-         (below painter (beside smaller-up smaller-up))
-         (below (below smaller-right smaller-right) smaller-corner)))))
+          (below painter (beside smaller-up smaller-up))
+          (below (below smaller-right smaller-right) smaller-corner)))))
 
 (define (square-limit painter n)
   (let* ((quarter (corner-split painter n))

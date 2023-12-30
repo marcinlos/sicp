@@ -13,10 +13,10 @@
 
 
 (define (branch-weight branch)
-    (let ((struct (structure-branch branch)))
-      (if (number? struct)
-          struct
-          (total-weight struct))))
+  (let ((struct (structure-branch branch)))
+    (if (number? struct)
+        struct
+        (total-weight struct))))
 
 (define (total-weight mobile)
   (+ (branch-weight (left-branch mobile))

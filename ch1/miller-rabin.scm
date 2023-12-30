@@ -13,8 +13,8 @@
                0
                sqr)))
         (else
-         (remainder (* base (expmod base (- exp 1) n))
-                    n))))
+          (remainder (* base (expmod base (- exp 1) n))
+                     n))))
 
 (define (miller-rabin-test n)
   (define (try-it a)
