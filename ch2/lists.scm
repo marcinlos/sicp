@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (length* list)
   (if (null? list)

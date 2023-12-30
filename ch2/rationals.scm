@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (gcd a b)
   (if (zero? b)

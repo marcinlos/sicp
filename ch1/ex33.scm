@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (accumulate-filter* combiner pred null-value term a next b)
   (define (accumulate-iter a result)

@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (cont-frac N D k)
   (define (cont-frac-iter i)

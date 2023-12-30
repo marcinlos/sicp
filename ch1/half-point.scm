@@ -1,4 +1,3 @@
-#lang sicp
 
 
 (define (bisect f pos-point neg-point)

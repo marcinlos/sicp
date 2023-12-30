@@ -1,4 +1,3 @@
-#lang sicp
 
 (define tolerance 0.0001)
 

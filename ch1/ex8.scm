@@ -1,4 +1,3 @@
-#lang planet neil/sicp
 
 
 (define (cube-root x)

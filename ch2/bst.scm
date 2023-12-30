@@ -1,4 +1,3 @@
-#lang sicp
 
 (define empty-tree nil)
 

@@ -1,4 +1,3 @@
-#lang planet neil/sicp
 
 (define (factorial n)
   (if (= n 1)

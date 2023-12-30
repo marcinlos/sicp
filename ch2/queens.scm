@@ -1,4 +1,3 @@
-#lang sicp
 
 ;; List utilities
 

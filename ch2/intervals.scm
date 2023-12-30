@@ -1,4 +1,3 @@
-#lang sicp
 
 
 (define make-interval cons)

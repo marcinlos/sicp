@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (sum? exp)
   (and (pair? exp) (equal? (car exp) '+)))

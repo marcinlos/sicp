@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (church-eval n)
   ((n inc) 0))

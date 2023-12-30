@@ -1,4 +1,3 @@
-#lang sicp
 
 (define (fold-tree f init t)
   (define (step t acc)

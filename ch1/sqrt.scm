@@ -1,4 +1,3 @@
-#lang planet neil/sicp
 
 (define (sqr x)
   (* x x))
