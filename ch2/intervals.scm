@@ -46,5 +46,7 @@
     (make-interval (apply min ends) (apply max ends))))
 
 (define (inv-interval i)
+  (if (> 0 (* (lower-bound i) (upper-bound i)))
+      (error "Interval spans 0"))
   (make-interval (/ 1.0 (upper-bound i))
                  (/ 1.0 (lower-bound i))))
