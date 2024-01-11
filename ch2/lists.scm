@@ -72,3 +72,11 @@
   (if (pair? list)
       (map-reverse* deep-reverse* list)
       list))
+
+
+(define (for-each action items)
+  (if (null? items)
+      #t
+      (begin
+        (action (car items))
+        (for-each action (cdr items)))))
