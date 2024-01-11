@@ -13,7 +13,7 @@
 
 
 (define (branch-weight branch)
-  (let ((struct (structure-branch branch)))
+  (let ((struct (branch-structure branch)))
     (if (number? struct)
         struct
         (total-weight struct))))
@@ -23,10 +23,11 @@
      (branch-weight (right-branch mobile))))
 
 (define (mobile-balanced? mobile)
-  (define (trivial-or-balanced? mobile)
-    (if (number? mobile)
-        #t
-        (mobile-balanced? mobile)))
+  (define (trivial-or-balanced? branch)
+    (let ((structure (branch-structure branch)))
+      (if (number? structure)
+          #t
+          (mobile-balanced? structure))))
   (define (branch-torque branch)
     (* (branch-length branch)
        (branch-weight branch)))
