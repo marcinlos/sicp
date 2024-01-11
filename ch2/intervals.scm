@@ -1,6 +1,7 @@
 
 
-(define make-interval cons)
+(define (make-interval x y) (cons (min x y)
+                                  (max x y)))
 (define lower-bound car)
 (define upper-bound cdr)
 
