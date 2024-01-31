@@ -1,6 +1,8 @@
+(define (is-op? op exp)
+  (and (pair? exp) (equal? (car exp) op)))
 
 (define (sum? exp)
-  (and (pair? exp) (equal? (car exp) '+)))
+  (is-op? '+ exp))
 
 (define (is-num-eq? exp n)
   (and (number? exp) (= exp n)))
@@ -11,10 +13,14 @@
         (else (list '+ a b))))
 
 (define (addend exp) (cadr exp))
-(define (augend exp) (caddr exp))
+(define (augend exp) (let ((rest (cddr exp)))
+                       (if (null? (cdr rest))
+                           (car rest)
+                           (cons '+ (cddr exp)))))
 
 (define (product? exp)
-  (and (pair? exp) (equal? (car exp) '*)))
+  (is-op? '* exp))
+
 
 (define (make-product a b)
   (cond ((is-num-eq? a 1) b)
@@ -24,7 +30,23 @@
         (else (list '* a b))))
 
 (define (multiplier exp) (cadr exp))
-(define (multiplicand exp) (caddr exp))
+(define (multiplicand exp) (let ((rest (cddr exp)))
+                             (if (null? (cdr rest))
+                                 (car rest)
+                                 (cons '* rest))))
+
+
+(define (exponentiation? exp)
+  (is-op? '** exp))
+
+(define (make-exponentiation a b)
+  (cond ((is-num-eq? a 1) 1)
+        ((is-num-eq? b 0) 1)
+        ((is-num-eq? b 1) a)
+        (else (list '** a b))))
+
+(define (base exp) (cadr exp))
+(define (exponent exp) (caddr exp))
 
 (define variable? symbol?)
 
@@ -40,4 +62,11 @@
          (make-sum (make-product (multiplier exp)
                                  (deriv (multiplicand exp) var))
                    (make-product (deriv (multiplier exp) var)
-                                 (multiplicand exp))))))
+                                 (multiplicand exp))))
+        ((exponentiation? exp)
+         (let ((a (base exp))
+               (b (exponent exp)))
+           (make-product exp
+                         (make-sum (make-product (deriv b var) (list 'log base))
+                                   (make-product (deriv a var) (list '/ b a))))))
+        (else (error "Unsupported expression: " exp))))
